@@ -1,7 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from "next/head";
 
-export default function Home() {
+/**
+ * Home page
+ */
+const Index = () => {
   return (
     <div>
       <Head>
@@ -11,5 +13,7 @@ export default function Home() {
       </Head>
       <div>Welcome</div>
     </div>
-  )
-}
+  );
+};
+
+export default Index;
