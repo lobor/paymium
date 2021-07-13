@@ -5,95 +5,71 @@ import Divider from "../components/Divider";
 const navLink = [
   {
     href: "/",
-    component: (
-      <a title="Overview" className="px-6 py-1 block hover:underline">
-        Overview
-      </a>
-    ),
+    component: "Overview",
   },
   {
     href: "/transactions",
-    component: (
-      <a title="Transactions" className="px-6 py-1 block hover:underline">
-        Transactions (3)
-      </a>
-    ),
+    component: "Transactions",
   },
   {
     component: <Divider className="my-5" />,
   },
   {
     href: "#",
-    component: (
-      <a title="Transfers" className="px-6 py-1 block hover:underline">
-        Transfers (2)
-      </a>
-    ),
+    component: "Transfers (2)",
   },
   {
     href: "#",
-    component: (
-      <a title="Invoices" className="px-6 py-1 block hover:underline">
-        Invoices (1)
-      </a>
-    ),
+    component: "Invoices (1)",
   },
   {
     component: <Divider className="my-5" />,
   },
   {
     href: "#",
-    component: (
-      <a title="Manage cards" className="px-6 py-1 block hover:underline">
-        Manage cards
-      </a>
-    ),
+    component: "Manage cards",
   },
   {
     href: "#",
-    component: (
-      <a title="Manage accounts" className="px-6 py-1 block hover:underline">
-        Manage accounts
-      </a>
-    ),
+    component: "Manage accounts",
   },
   {
     component: <Divider className="my-5" />,
   },
   {
     href: "#",
-    component: (
-      <a title="Team" className="px-6 py-1 block hover:underline">
-        Team
-      </a>
-    ),
+    component: "Team",
   },
   {
     href: "#",
-    component: (
-      <a title="Integrations" className="px-6 py-1 block hover:underline">
-        Integrations
-      </a>
-    ),
+    component: "Integrations",
   },
   {
     href: "#",
-    component: (
-      <a title="Settings" className="px-6 py-1 block hover:underline">
-        Settings
-      </a>
-    ),
+    component: "Settings",
   },
   {
-    href: "#",
     component: (
-      <a title="Upgrade account" className="px-6 py-1 block hover:underline">
-        Upgrade account
-      </a>
+      <div className="flex">
+        <Link href="#">
+          <a
+            title="Upgrade account"
+            style={{ borderColor: "#668691", color: "#668691" }}
+            className="border px-2 py-1 m-auto inline-block mt-5 rounded-md"
+          >
+            Upgrade account
+          </a>
+        </Link>
+      </div>
     ),
   },
 ];
 
+/**
+ * Layout navigation
+ * 
+ * define header, navigation and show pages
+ */
 const Layout: FC = ({ children }) => {
   return (
     <div className="flex flex-row w-full">
@@ -112,7 +88,16 @@ const Layout: FC = ({ children }) => {
             {navLink.map(({ href, component }, i) => {
               let renderComponent = component;
               if (href) {
-                renderComponent = <Link href={href}>{component}</Link>;
+                renderComponent = (
+                  <Link href={href}>
+                    <a
+                      title={component as unknown as string}
+                      className="px-6 py-1 block hover:underline"
+                    >
+                      {component}
+                    </a>
+                  </Link>
+                );
               }
               return <li key={i}>{renderComponent}</li>;
             })}
@@ -121,7 +106,10 @@ const Layout: FC = ({ children }) => {
       </div>
       <div className="flex flex-1 flex-col">
         <div className="h-16" style={{ backgroundColor: "#ecb02d" }}>
-          <div className="h-full w-1/4 float-right" style={{ backgroundColor: "#f6f6f6" }} />
+          <div
+            className="h-full w-1/4 float-right"
+            style={{ backgroundColor: "#f6f6f6" }}
+          />
         </div>
         <section className="flex flex-1 overflow-auto">{children}</section>
       </div>

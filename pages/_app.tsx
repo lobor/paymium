@@ -2,11 +2,15 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "../components/Nav";
 
-function MyApp({ Component, pageProps }: AppProps) {
+/**
+ * 
+ * Wrapper pages
+ */
+function _App({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Component {...pageProps} />
     </Layout>
   );
 }
-export default MyApp;
+export default _App;
